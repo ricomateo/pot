@@ -5,6 +5,56 @@
     </head>
 
     <body>
+        <script>
+            function getRandomChoice() {
+                let options = ['Rock', 'Paper', 'Scissors'];
+                let computerChoice = options[Math.floor(Math.random()*options.length)];
+                return computerChoice;
+            }
+
+            function getPlayerChoice() {
+                let options = ['Rock', 'Paper', 'Scissors'];
+                let usersChoice = prompt("Enter a Choice: Rock, Paper or Scissors");
+                
+                while(!options.includes(usersChoice)) {
+                    console.log("The choice you entered is not allowed.Please")
+                    usersChoice = prompt("Enter a Choice: Rock, Paper or Scissors");
+                }
+
+                return usersChoice;
+            }
+
+            function determineWinner(usersChoice, computerChoice) {
+                if (usersChoice == 'Rock') {
+                    if (computerChoice == 'Scissors') return 'You won.';
+                    else if (computerChoice == 'Paper') return 'You lost.';
+                
+                } else if (usersChoice == 'Paper') {
+                    if (computerChoice == 'Scissors') return 'You lost.';
+                    else if (computerChoice == 'Rock') return 'You won.';
+                
+                } else {
+                    if (computerChoice == 'Rock') return 'You lost.';
+                    else if (computerChoice == 'Paper') return 'You won.';
+                }
+
+            }
+
+            function playRound() {
+                let usersChoice = getPlayerChoice();
+                let computerChoice = getRandomChoice();
+
+                while (usersChoice == computerChoice) {
+                    console.log("empate prro :v")
+                    usersChoice = getPlayerChoice();
+                    computerChoice = getRandomChoice();
+                }
+                console.log("You choose:         " + usersChoice);
+                console.log("computer choose:    " + computerChoice); 
+                return determineWinner(usersChoice, computerChoice);
+            }
+            console.log(playRound());
+        </script>
 
     </body>
 
